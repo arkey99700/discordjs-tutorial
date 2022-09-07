@@ -1,3 +1,5 @@
+import { bold, italic } from "discord.js";
+
 const interactionCreate = async function (interaction) {
   if (interaction.isChatInputCommand() && interaction.commandName === "poll") {
     const emojiList = [
@@ -12,7 +14,7 @@ const interactionCreate = async function (interaction) {
       "9️⃣",
       "🔟",
     ];
-    let reply = `***${interaction.options.get("prompt").value}***`;
+    let reply = italic(bold(`${interaction.options.get("prompt").value}`));
 
     for (let i = 1; i < interaction.options.data.length; i++) {
       reply += `\n${i}. ${interaction.options.data[i].value}`;
