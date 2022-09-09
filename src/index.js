@@ -1,5 +1,6 @@
 import { config } from "dotenv";
 import poll from "./commands/poll.js";
+import raffle from "./commands/raffle.js";
 import interactionCreate from "./events/interactionCreate.js";
 import { Client, Routes, REST, GatewayIntentBits } from "discord.js";
 
@@ -28,7 +29,7 @@ client.on("ready", () => {
 client.on("interactionCreate", (interaction) => interactionCreate(interaction));
 
 async function init() {
-  const commands = [poll];
+  const commands = [poll, raffle];
 
   console.log("Started refreshing application commands");
   await rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), {
